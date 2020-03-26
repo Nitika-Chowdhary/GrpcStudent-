@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+option csharp_namespace = "GrpcService4.Protos";
+
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/empty.proto";
+
+package Student;
+
+service StudentSvc {
+	rpc ReadStudent(Id) returns (StudentProfile);
+	rpc CreateStudent(StudentProfile) returns (google.protobuf.Empty);
+	rpc UpdateStudent(StudentProfile) returns (google.protobuf.Empty);
+	rpc DeleteStudent(Id) returns (google.protobuf.Empty);
+}
+
+message Id {
+	string Identifier = 1;
+}
+
+message StudentProfile {
+	string Identifer = 1;
+	string Name = 2;
+	int32 Grade = 3;
+	google.protobuf.Timestamp DoB = 4;
+}
+
